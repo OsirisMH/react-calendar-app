@@ -86,3 +86,18 @@ html, body {
     position: fixed;
     left: 25px;
 }
+
+/*  Loading   */
+.loadingContainer {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.loadingContainer > h5{
+    text-align: center;
+    padding-top: 1em;
+}
