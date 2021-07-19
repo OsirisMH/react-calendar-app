@@ -24,6 +24,7 @@ export const CalendarScreen =  () => {
     const dispatch = useDispatch();
     // TODO: leer los eventos del store
     const { events, activeEvent } = useSelector(state => state.calendar);
+    const { uid } = useSelector( state => state.auth );
 
     const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'month' );
 
@@ -50,7 +51,7 @@ export const CalendarScreen =  () => {
             opacity: '0.8',
             display: 'block',
             color: 'white',
-            backgroundColor: '#d51c30'
+            backgroundColor: ( uid === event.user._id ) ? '#d51c30' : '#2bd32e'
         };
         return { style };
     };

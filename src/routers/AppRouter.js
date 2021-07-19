@@ -6,6 +6,7 @@ import {
     Redirect
 } from "react-router-dom";
 import ReactLoading from 'react-loading';
+import NotificationContainer from 'react-notifications/lib/NotificationContainer';
 
 import { LoginScreen } from '../components/auth/LoginScreen';
 import { CalendarScreen } from '../components/calendar/CalendarScreen';
@@ -15,9 +16,10 @@ import { PrivateRoute } from './PrivateRoute';
 import { startChecking } from '../actions/auth';
 
 import '../styles.css';
+import 'react-notifications/lib/notifications.css';
 
 export const AppRouter = () => {
-
+    
     const dispatch = useDispatch();
     const { checking, uid } = useSelector(state => state.auth)
     
@@ -28,14 +30,14 @@ export const AppRouter = () => {
     if ( checking ) {
         return (
             <div className="loadingContainer">
+                <h5>Loading...</h5>
                 <ReactLoading
                     type="spin"
                     color="#0062cc"
-                    height={80}
-                    width={80}
+                    height={60}
+                    width={60}
                     className="loading"
                 />
-                <h5>Loading...</h5>
             </div> 
         );
     }
@@ -59,6 +61,7 @@ export const AppRouter = () => {
                     />
                     <Redirect to="/" />
                 </Switch>
+                <NotificationContainer />
             </div>
         </Router>
     )

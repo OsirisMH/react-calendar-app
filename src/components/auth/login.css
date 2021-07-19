@@ -49,3 +49,9 @@
     font-weight: 600;
     text-decoration: none;
 }
+
+.notification-container {
+    margin-bottom: 20px;
+    bottom: 0;
+    top: auto !important;
+}

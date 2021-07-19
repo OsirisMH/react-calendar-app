@@ -92,12 +92,11 @@ html, body {
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    
+    justify-content: center;    
 }
 
 .loadingContainer > h5{
     text-align: center;
-    padding-top: 1em;
+    padding-right: 0.5em;
+    padding-top: 8px;
 }

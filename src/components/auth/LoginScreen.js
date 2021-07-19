@@ -15,15 +15,15 @@ export const LoginScreen = () => {
     const [isLoginIn, setIsLoginIn] = useState( true );
     
     const [ formLoginValues, handleLoginInputChange ] = useForm({
-        loginEmail: 'oamh09@gmail.com',
-        loginPassword: 'Ganyu00'
+        loginEmail: '',
+        loginPassword: ''
     });
 
     const [ formRegisterValues, handleRegisterInputChange ] = useForm({
-        registerName: 'Asthar',
-        registerEmail: 'azrho07@gmail.com',
-        registerPassword: '123456',
-        registerPasswordConfirm: '123456'
+        registerName: '',
+        registerEmail: '',
+        registerPassword: '',
+        registerPasswordConfirm: ''
     });
 
     const {loginEmail, loginPassword } = formLoginValues;

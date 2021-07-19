@@ -7,7 +7,7 @@ import DateTimePicker from 'react-datetime-picker';
 import Swal from 'sweetalert2';
 
 import { uiCloseModal } from '../../actions/ui';
-import { eventClearActiveEvent, eventStartAddNew, eventUpdated } from '../../actions/events';
+import { eventClearActiveEvent, eventStartAddNew, eventStartUpdate } from '../../actions/events';
 
 const customStyles = {
     content: {
@@ -19,7 +19,9 @@ const customStyles = {
       transform: 'translate(-50%, -50%)',
     },
 };
-Modal.setAppElement('#root');
+
+if ( process.env.NODE_ENV !== 'test' )
+    Modal.setAppElement('#root');
 
 const now = moment().minutes(0).seconds(0).add(1, 'hours');
 const nowPlus1 = now.clone().add(1, 'hours');
@@ -70,7 +72,7 @@ export const CalendarModal = () => {
     };
 
     const handleSubmitForm = (e) => {
-        e.preventDefault();  
+        e.preventDefault();
         const momentStart = moment( start );
         const momentEnd = moment( end );
 
@@ -84,7 +86,7 @@ export const CalendarModal = () => {
 
         //TODO: realizar grabación en base de datos
         if ( activeEvent ) {
-            dispatch( eventUpdated(formValues) );
+            dispatch( eventStartUpdate(formValues) );
         }
         else {
             dispatch( eventStartAddNew(formValues) );
@@ -113,6 +115,7 @@ export const CalendarModal = () => {
             closeTimeoutMS={ 200 }
             className="modal"
             overlayClassName="modal-fondo"
+            ariaHideApp={ !process.env.NODE_ENV === 'test' }
         >
             <h1> { (activeEvent) ? 'Editar evento' : 'Nuevo evento' } </h1>
             <hr />
